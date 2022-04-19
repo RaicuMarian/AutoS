@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import {Picker, CheckBox} from '@react-native-picker/picker';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput';
 
@@ -12,7 +12,7 @@ const SignUpScreen = () => {
   const [anMasina, setAnMasina] = useState('');
   const [combustibilMasina, setCombustibilMasina] = useState('');
   const [selectedValue, setSelectedValue] = useState("Combustibil");
-
+  
 
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -70,15 +70,15 @@ const SignUpScreen = () => {
         setValue={setAnMasina} 
       />
 
-      <CustomInput
-        placeholder="Combustibil Masina"
-        value={combustibilMasina}
-        setValue={setCombustibilMasina} 
-      />
-
+     <View style={styles.containerCombustibil}>
+      <Text style={{
+        width: '90%', 
+        backgroundColor: 'white', 
+        padding: 7,
+         }}>Combustibil:</Text>
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
+        style={{ width: '90%', backgroundColor: 'white', }}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
         <Picker.Item label="Benzina" value="benzina" />
@@ -86,6 +86,23 @@ const SignUpScreen = () => {
         <Picker.Item label="Hibrid" value="hibrid" />
         <Picker.Item label="Electrica" value="electrica" />
       </Picker>
+     </View>
+
+      {/* De veridicat maine codul pentru checker care este asta de jos. */}
+
+     <View style={styles.container}>
+      <View style={styles.checkboxContainer}>
+        <CheckBox
+          value={isSelected}
+          onValueChange={setSelection}
+          style={styles.checkbox}
+        />
+        <Text style={styles.label}>Do you like React Native?</Text>
+      </View>
+      <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text>
+    </View>
+
+    {/* Pana aici */}
 
       <CustomInput
         placeholder="Email"
@@ -160,7 +177,22 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: '#6eacc9',
       margin: 25,
-    }
+    },
+
+// Style copiat din pagina de Custom input, folosit pentru pickerul de combustibil.
+
+    containerCombustibil: {
+      
+      backgroundColor: 'white',
+      width: '90%',
+
+      borderColor: '#e8e8e8',
+      borderWidth: 1,
+      borderRadius: 5,
+
+      paddingHorizontal: 15,
+      marginVertical: 5,
+  },
 
 
 });
