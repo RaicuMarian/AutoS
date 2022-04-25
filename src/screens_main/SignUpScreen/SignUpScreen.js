@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import {Picker, CheckBox} from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomInput from '../../components/CustomInput';
 
@@ -10,7 +10,6 @@ const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [marcaMasina, setMarcaMasina] = useState('');
   const [anMasina, setAnMasina] = useState('');
-  const [combustibilMasina, setCombustibilMasina] = useState('');
   const [selectedValue, setSelectedValue] = useState("Combustibil");
   
 
@@ -87,22 +86,6 @@ const SignUpScreen = () => {
         <Picker.Item label="Electrica" value="electrica" />
       </Picker>
      </View>
-
-      {/* De veridicat maine codul pentru checker care este asta de jos. */}
-
-     <View style={styles.container}>
-      <View style={styles.checkboxContainer}>
-        <CheckBox
-          value={isSelected}
-          onValueChange={setSelection}
-          style={styles.checkbox}
-        />
-        <Text style={styles.label}>Do you like React Native?</Text>
-      </View>
-      <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text>
-    </View>
-
-    {/* Pana aici */}
 
       <CustomInput
         placeholder="Email"
